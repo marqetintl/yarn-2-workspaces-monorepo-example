@@ -11,13 +11,13 @@ You can either:
 
 In your work directory, run:
 
-```
+```bash
 git clone https://github.com/marqetintl/yarn-2-workspaces-monorepo-example.git
 ```
 
 Install the required dependencies:
 
-```
+```bash
 cd yarn-2-workspaces-monorepo-example
 yarn
 ```
@@ -30,30 +30,32 @@ Jump to [step 3](https://github.com/marqetintl/yarn-2-workspaces-monorepo-exampl
 
 1. Install Yarn globally, if you haven't:
 
-```
+```bash
 npm install -g yarn
 ```
 
-2. Setup project folder
+2. Create project folder:
 
-```
+```bash
 mkdir yarn-2-workspaces-monorepo-example && cd $_
 ```
 
-3. Set Yarn version to latest
+3. Set Yarn version to latest:
 
-```
+```bash
 yarn set version berry
 yarn set version latest
 ```
 
-```
+4. Initialize project:
+
+```bash
 yarn init -w
 ```
 
-Here is the current folder tree(`tree -a -L 1`)
+If I were to run `tree -a -L 1` , the folder tree would look like this:
 
-```
+```bash
 .
 ├── .editorconfig
 ├── .git
@@ -67,56 +69,63 @@ Here is the current folder tree(`tree -a -L 1`)
 └── yarn.lock
 ```
 
-Now, let's add two packages to our monorepo.
+5. Add two packages `myapp-1` and `myapp-2` to our monorepo:
 
-```
+```bash
 cd packages/
 mkdir myapp-1 myapp-2
 ```
 
-Navigate to `myapp-2` and add an `index.js` file.
+6. Navigate to `packages/myapp-2/` and add an `index.js` file:
 
-```
+```bash
 cd myapp-2/
 yarn init -yp
 touch index.js
 ```
 
-Update `packages/myapp-2/index.js`.
+7. Update `packages/myapp-2/index.js`:
 
-```
-export const log = console.log;
+```js
+const defaultName = "Michaël";
+
+module.exports = {
+    defaultName,
+    logName(name) {
+        return console.log(`Hello! I am ${name}`);
+    },
+};
 ```
 
-Update `packages/myapp-2/package.json`.
+8. Update `packages/myapp-2/package.json`:
 
-```
+```json
 {
     "name": "@miq/myapp-2",
     "main": "index.js"
 }
 ```
 
-Navigate to `myapp-1` and add an `index.js` file.
+9. Navigate to `packages/myapp-1` and add an `index.js` file:
 
-```
+```bash
 cd ../myapp-1/
 yarn init -yp
 touch index.js
 ```
 
-Update `packages/myapp-1/index.js`
+10. Update `packages/myapp-1/index.js`:
 
-```
+```js
 const { defaultName, logName } = require("@miq/myapp-2");
 
 logName(defaultName);
 logName("John");
 ```
 
-Then update `packages/myapp-1/package.json`
+11. Then update `packages/myapp-1/package.json`:
 
-```
+```json
 {
     "name": "@miq/myapp-1",
     "dependencies": {
@@ -126,40 +135,37 @@ Then update `packages/myapp-1/package.json`
         "start": "node ."
     }
 }
-
 ```
 
-Update `package.json`
+12. Update the project's `package.json`:
 
-```
+```json
 {
     "name": "@miq/yarn-2-workspaces-monorepo-example",
     "private": true,
-    "workspaces": [
-        "packages/*"
-    ],
+    "workspaces": ["packages/*"],
     "scripts": {
         "start:myapp1": "yarn workspace @miq/myapp-1 start"
     }
 }
 ```
 
-From the root folder, run `yarn` to install the dependencies:
+13. From the root folder, run `yarn` to install the dependencies:
 
-```
+```bash
 cd ../../
 yarn
 ```
 
 ## 3. To run the project
 
-```
+```bash
 yarn start:myapp1
 ```
 
 You should see the output:
 
-```
+```bash
 ...
 
 Hello! I am Michaël
