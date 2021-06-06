@@ -22,6 +22,8 @@ cd yarn-2-workspaces-monorepo-example
 yarn
 ```
 
+Jump to [step 3](https://github.com/marqetintl/yarn-2-workspaces-monorepo-example#3-to-run-the-project)
+
 ## 2. Setup from scratch
 
 > Always refer to the [original documentation](https://yarnpkg.com/getting-started/install) to get the latest instructions on how to install Yarn.
