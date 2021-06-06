@@ -1,18 +1,51 @@
-# Yarn 2 workspaces simple monorepo example
+# Yarn 2 workspaces monorepo example
 
-Either clone the repository or follow the following steps to setup the project
+This project demonstrates how to set up a monorepo with Yarn 2.
 
-### 1. Install Yarn and project setup
+You can either:
 
-A project is
+-   clone the repository or
+-   set the project up from scratch
 
-Always refer to the [original documentation](https://yarnpkg.com/getting-started/install) to get the latest instructions.
+## 1. Cloning the repo
+
+In your work directory, run:
+
+```
+git clone https://github.com/marqetintl/yarn-2-workspaces-monorepo-example.git
+```
+
+Install the required dependencies:
+
+```
+cd yarn-2-workspaces-monorepo-example
+yarn
+```
+
+## 2. Setup from scratch
+
+> Always refer to the [original documentation](https://yarnpkg.com/getting-started/install) to get the latest instructions on how to install Yarn.
+
+1. Install Yarn globally, if you haven't:
 
 ```
 npm install -g yarn
+```
+
+2. Setup project folder
+
+```
 mkdir yarn-2-workspaces-monorepo-example && cd $_
+```
+
+3. Set Yarn version to latest
+
+```
 yarn set version berry
 yarn set version latest
+```
+
+```
 yarn init -w
 ```
 
@@ -32,12 +65,14 @@ Here is the current folder tree(`tree -a -L 1`)
 └── yarn.lock
 ```
 
-Now, let's add two apps to our monorepo
+Now, let's add two packages to our monorepo.
 
 ```
 cd packages/
 mkdir myapp-1 myapp-2
 ```
+
+Navigate to `myapp-2` and add an `index.js` file.
 
 ```
 cd myapp-2/
@@ -45,13 +80,13 @@ yarn init -yp
 touch index.js
 ```
 
-Update `packages/myapp-2/index.js`
+Update `packages/myapp-2/index.js`.
 
 ```
 export const log = console.log;
 ```
 
-Update `packages/myapp-2/package.json`
+Update `packages/myapp-2/package.json`.
 
 ```
 {
@@ -60,7 +95,7 @@ Update `packages/myapp-2/package.json`
 }
 ```
 
-Navigate to `myapp-1`
+Navigate to `myapp-1` and add an `index.js` file.
 
 ```
 cd ../myapp-1/
@@ -107,23 +142,22 @@ Update `package.json`
 }
 ```
 
-From the root folder, run:
+From the root folder, run `yarn` to install the dependencies:
 
 ```
 cd ../../
 yarn
 ```
 
-To test, run
+## 3. To run the project
 
 ```
-yarn
+yarn start:myapp1
 ```
 
 You should see the output:
 
 ```
-yarn start:myapp1
 ...
 
 Hello! I am Michaël
@@ -133,7 +167,7 @@ Hello! I am John
 
 ```
 
-## Good to know
+## 4. Good to know
 
 1. List all workspaces:
 
