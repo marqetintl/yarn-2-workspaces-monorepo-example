@@ -1,0 +1,9 @@
+{
+    "name": "@miq/myapp-1",
+    "dependencies": {
+        "@miq/myapp-2": "workspace:*"
+    },
+    "scripts": {
+        "start": "node ."
+    }
+}

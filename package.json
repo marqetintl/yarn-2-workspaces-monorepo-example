@@ -1,0 +1,10 @@
+{
+    "name": "@miq/yarn-2-workspaces-monorepo-example",
+    "private": true,
+    "workspaces": [
+        "packages/*"
+    ],
+    "scripts": {
+        "start:myapp1": "yarn workspace @miq/myapp-1 start"
+    }
+}
