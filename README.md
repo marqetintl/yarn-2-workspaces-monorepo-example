@@ -171,19 +171,19 @@ Hello! I am John
 
 ## 4. Good to know
 
-1. List all workspaces:
+-   List all workspaces:
 
 ```
 yarn workspaces list
 ```
 
-2. Create a new private package and define it as a workspace root with a `packages/` directory:
+-   Create a new private package and define it as a workspace root with a `packages/` directory:
 
 ```
 yarn init -w
 ```
 
-3. Initialize a private package in the local directory:
+-   Initialize a private package in the local directory:
 
 ```
 yarn init -p
