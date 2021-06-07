@@ -120,7 +120,7 @@ touch index.js
 const { defaultName, logName } = require("@miq/myapp-2");
 
 logName(defaultName);
-logName("John");
+logName("Jean-Michel");
 ```
 
 11. Then update `packages/myapp-1/package.json`:
@@ -169,7 +169,7 @@ You should see the output:
 ...
 
 Hello! I am Michaël
-Hello! I am John
+Hello! I am Jean-Michel
 
 ...
 
